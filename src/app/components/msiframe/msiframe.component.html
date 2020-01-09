@@ -1,0 +1,45 @@
+<div class="box-iframe-root">
+
+  <iframe [id]="scrnIndexID" class="box-iframe" [src]="viewData.url?viewData.url:'javascript:;'"
+          (error)="onError()"
+          (load)="onLoad()"
+          [style.display]="viewData.isLoading||!this.viewData.inputDefineURL||!this.viewData.isShowFrame?'none':'block'">
+
+  </iframe>
+
+  <div class="box-setting" *ngIf="this.viewData.inputDefineURL&&!this.viewData.isLoading&&!this.viewData.isShowFrame">
+    已配置：<br/>{{this.viewData.inputDefineURL}}</div>
+
+  <div class="box-no-setting" *ngIf="!this.viewData.inputDefineURL">暂无配置</div>
+
+  <div class="box-loading" [style.display]="viewData.isLoading?'flex':'none'">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="30px" viewBox="0 0 24 30"
+         style="enable-background:new 0 0 50 50" xml:space="preserve">
+    <rect x="0" y="0" width="4" height="10" fill="#FF6700" transform="translate(0 9.4336)">
+        <animateTransform attributeType="xml" attributeName="transform" type="translate" values="0 0; 0 20; 0 0"
+                          begin="0" dur="0.6s" repeatCount="indefinite"></animateTransform>
+    </rect>
+      <rect x="10" y="0" width="4" height="10" fill="#FF6700" transform="translate(0 17.2331)">
+        <animateTransform attributeType="xml" attributeName="transform" type="translate" values="0 0; 0 20; 0 0"
+                          begin="0.2s" dur="0.6s" repeatCount="indefinite"></animateTransform>
+    </rect>
+      <rect x="20" y="0" width="4" height="10" fill="#FF6700" transform="translate(0 3.89973)">
+        <animateTransform attributeType="xml" attributeName="transform" type="translate" values="0 0; 0 20; 0 0"
+                          begin="0.4s" dur="0.6s" repeatCount="indefinite"></animateTransform>
+    </rect>
+    </svg>
+  </div>
+  <img class="btn-config" src="assets/img/config.png" (click)="onClick_config()"/>
+  <img class="btn-go" src="assets/img/go.png" (click)="onClick_go()"/>
+
+  <div class="dialog-bg" *ngIf="viewData.isShowDialog" (click)="viewData.isShowDialog = false;">
+    <div class="dialog-content" (click)="$event.stopPropagation();">
+      <p>请配置搜索引擎链接：</p>
+      <input type="text" placeholder="比如:http://www.baidu.com/s?wd={query}" [(ngModel)]="viewData.inputDefineURL"/>
+      <div class="box-btns">
+        <button class="btn" (click)="viewData.isShowDialog = false;">取消</button>
+        <button class="btn" (click)="onClick_ok()">确定</button>
+      </div>
+    </div>
+  </div>
+</div>

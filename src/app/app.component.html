@@ -1,0 +1,32 @@
+<div class="box-root">
+  <div class="box-top">
+    <ms-search-box (onClick_Search)="onClick_Search($event)"></ms-search-box>
+    <div class="box-btns">
+      <!--      <div class="btn" *ngIf="viewData.screens.length<4" (click)="onClick_addScreen()">-->
+      <!--        <img class="btn-add" src="assets/img/add.png"/>-->
+      <!--      </div>-->
+      <div class="btn btn-screen" *ngFor="let scrn of viewData.screens"
+           (click)="onClick_Screen_Select($event,scrn)"
+           [style.border-width]="scrn.isShow?'1px':'0'">
+        {{scrn.index }}屏
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size: 12px;color: red;margin:5px auto">由于跨域限制，请在'禁止浏览器同源策略'下访问，<a
+    href="https://www.baidu.com/s?wd=%E7%A6%81%E6%AD%A2%E6%B5%8F%E8%A7%88%E5%99%A8%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5" target="_blank">点击这了解更多。</a>
+  </div>
+
+  <div class="box-result-list">
+
+    <div class="screen" *ngFor="let scrn of viewData.screens" [style.display]="scrn.isShow?'flex':'none'">
+      <ms-iframe-box class="box-browser box-browser1" [defineURL]="scrn.defineURL1"
+                     [scrnIndexID]="scrn.index+'-1'"></ms-iframe-box>
+      <ms-iframe-box class="box-browser" [defineURL]="scrn.defineURL2" [scrnIndexID]="scrn.index+'-2'"></ms-iframe-box>
+      <ms-iframe-box class="box-browser" [defineURL]="scrn.defineURL3" [scrnIndexID]="scrn.index+'-3'"></ms-iframe-box>
+      <ms-iframe-box class="box-browser box-browser4" [defineURL]="scrn.defineURL4"
+                     [scrnIndexID]="scrn.index+'-4'"></ms-iframe-box>
+    </div>
+  </div>
+</div>
+

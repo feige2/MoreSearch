@@ -1,0 +1,102 @@
+.box-iframe-root {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  iframe.box-iframe {
+    width: 125%;
+    height: 125%;
+    border: 0;
+    transform: scale(0.8);
+    transform-origin: 0 0;
+  }
+
+  .box-no-setting{
+    width: 100%;
+    height: 100%;
+    background: white;
+    font-size: 40px;
+    font-weight: 600;
+    color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .box-setting{
+    width: 100%;
+    height: 100%;
+    padding: 10px 10px;
+    background: white;
+    font-size: 12px;
+    font-weight: 400;
+    color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  div.box-loading {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .btn-config {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+  }
+  .btn-go{
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+  }
+
+  .dialog-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .dialog-content {
+      width: 80%;
+      background: white;
+      border-radius: 6px;
+      text-align: center;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+
+      input {
+        width: 80%;
+        height: 35px;
+      }
+
+      .box-btns {
+        margin-top: 20px;
+
+        .btn {
+          margin: 0 10px;
+          border-radius: 6px;
+          font-size: 14px;
+          padding: 4px 12px;
+        }
+      }
+    }
+  }
+}
+

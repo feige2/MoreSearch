@@ -1,0 +1,33 @@
+
+.ms-search-box {
+
+  $w_box: 440px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $w_box;
+  border-radius: 4px;
+  margin: 0 auto;
+
+  .img-search {
+    width: 50px;
+    height: 50px;
+  }
+
+  .input-search {
+    width: 0;
+    height: 38px;
+    flex: 1;
+    font-size: 18px;
+  }
+  input:focus {
+    outline-width: 2px;
+  }
+
+  .btn-search {
+    height: 45px;
+    font-size: 14px;
+  }
+
+}
