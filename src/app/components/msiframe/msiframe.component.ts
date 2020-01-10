@@ -108,8 +108,7 @@ export class MSIframeComponent extends BaseView<IViewData> implements OnInit {
 
   onClick_ok() {
     this.defineURL = this.viewData.inputDefineURL;
-    this.setIsShowDialog(false);
-    this.msService.saveDefineURL(this.scrnIndexID, this.defineURL);
+    this.setIsShowDialog(false, true);
   }
 
   onClick_go() {
@@ -118,9 +117,14 @@ export class MSIframeComponent extends BaseView<IViewData> implements OnInit {
     }
   }
 
-  setIsShowDialog(isShow: boolean) {
+  setIsShowDialog(isShow: boolean, isSave?: boolean) {
     this.viewData.isShowDialog = isShow;
     this.viewData.isShowSelect = false;
+    if (isSave) {
+      this.msService.saveDefineURL(this.scrnIndexID, this.defineURL);
+    } else {
+      this.viewData.inputDefineURL = this.defineURL;
+    }
   }
 
   onClick_select_item(event: Event, item: { name: string; queryURL: string }) {
