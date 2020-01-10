@@ -42,13 +42,19 @@
   <img class="btn-config" src="assets/img/config.png" (click)="onClick_config()"/>
   <img class="btn-go" src="assets/img/go.png" (click)="onClick_go()"/>
 
-  <div class="dialog-bg" *ngIf="viewData.isShowDialog" (click)="viewData.isShowDialog = false;">
-    <div class="dialog-content" (click)="$event.stopPropagation();">
+  <div class="dialog-bg" *ngIf="viewData.isShowDialog" (click)="setIsShowDialog(false)">
+    <div class="dialog-content" (click)="onDialogContentClick($event)">
       <p>请配置搜索引擎链接：</p>
-      <input type="text" placeholder="比如:http://www.baidu.com/s?wd={query}" [(ngModel)]="viewData.inputDefineURL"/>
+      <div class="box-input">
+        <input type="text" placeholder="比如:http://www.baidu.com/s?wd={query}" [(ngModel)]="viewData.inputDefineURL"/>
+        <button (click)="onClick_show_select($event)">选择常用</button>
+      </div>
       <div class="box-btns">
-        <button class="btn" (click)="viewData.isShowDialog = false;">取消</button>
+        <button class="btn" (click)="setIsShowDialog(false)">取消</button>
         <button class="btn" (click)="onClick_ok()">确定</button>
+        <div class="box-select-items" *ngIf="viewData.isShowSelect">
+          <div class="item" *ngFor="let item of viewData.selectItems" (click)="onClick_select_item($event,item)">{{item.name}}</div>
+        </div>
       </div>
     </div>
   </div>
