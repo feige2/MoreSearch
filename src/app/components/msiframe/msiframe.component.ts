@@ -37,7 +37,7 @@ export class MSIframeComponent extends BaseView<IViewData> implements OnInit {
   ngOnInit() {
     this.msService.addBrowser(this);
     const url = this.msService.getDefineURL(this.scrnIndexID);
-    this.viewData.inputDefineURL = url ? url : this.defineURL;
+    this.viewData.inputDefineURL = (url || url === '') ? url : this.defineURL;
     this.defineURL = this.viewData.inputDefineURL;
   }
 
