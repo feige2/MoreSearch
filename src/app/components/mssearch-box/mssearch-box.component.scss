@@ -1,12 +1,13 @@
 
 .ms-search-box {
 
-  $w_box: 440px;
+  $w_box: 40%;
 
   display: flex;
   justify-content: center;
   align-items: center;
   width: $w_box;
+  min-width: 200px;
   border-radius: 4px;
   margin: 0 auto;
 

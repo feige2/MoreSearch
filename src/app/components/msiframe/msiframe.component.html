@@ -3,14 +3,24 @@
   <iframe [id]="scrnIndexID" class="box-iframe" [src]="viewData.url?viewData.url:'javascript:;'"
           (error)="onError()"
           (load)="onLoad()"
-          [style.display]="viewData.isLoading||!this.viewData.inputDefineURL||!this.viewData.isShowFrame?'none':'block'">
+          [name]="scrnIndexID"
+          [style.display]="viewData.isLoading||!this.viewData.inputDefineURL||!this.viewData.isShowFrame||this.viewData.isError?'none':'block'">
 
   </iframe>
 
-  <div class="box-setting" *ngIf="this.viewData.inputDefineURL&&!this.viewData.isLoading&&!this.viewData.isShowFrame">
-    已配置：<br/>{{this.viewData.inputDefineURL}}</div>
+  <div class="box-setting"
+       *ngIf="this.viewData.inputDefineURL&&!this.viewData.isLoading&&!this.viewData.isShowFrame&&!this.viewData.isError">
+    已配置：<br/>{{this.viewData.inputDefineURL}}
+    <div style="margin: 20px 20px">由于源站可能禁止iframe嵌套，<br/>您需要搭配chrome插件 <a
+      href="https://github.com/Louiszhai/IHeader" target="_blank">iHeader</a> 一起使用：）
+    </div>
+  </div>
 
-  <div class="box-no-setting" *ngIf="!this.viewData.inputDefineURL">暂无配置</div>
+  <div class="box-no-setting" *ngIf="!this.viewData.inputDefineURL">暂无配置
+    <div style="margin: 20px 20px;font-size: 12px;font-weight: 400">由于源站可能禁止iframe嵌套，<br/>您需要搭配chrome插件 <a
+      href="https://github.com/Louiszhai/IHeader" target="_blank">iHeader</a> 一起使用：）
+    </div>
+  </div>
 
   <div class="box-loading" [style.display]="viewData.isLoading?'flex':'none'">
     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="30px" viewBox="0 0 24 30"

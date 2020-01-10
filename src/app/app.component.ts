@@ -99,4 +99,8 @@ export class AppComponent extends BaseView<IViewData> {
       this.viewData.screens.splice(this.viewData.screens.findIndex(item => item.index === index), 1);
     }
   }
+
+  onClick_open_github() {
+    window.open('https://github.com/xuefengnice/MoreSearch');
+  }
 }
