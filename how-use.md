@@ -16,3 +16,5 @@ git clone https://github.com/xuefengnice/IHeader.git
 2. 使用chrome开发者模式加载此插件**根目录**（加载已解压的扩展程序）即可。
 
 ![](./imgs/20011102.png)
+
+![](./imgs/20011201.png)
