@@ -15,7 +15,7 @@
 
 由于禁止浏览器同源策略运行，此操作**极端危险**，故我们不再推荐此方式。推荐大家使用**Chrome插件[iHeader](http://github.com/Louiszhai/IHeader)**来完成X-Frame-Options响应头的去除，或者也可以自行**搭建代理服务器**。
 
-关于iHeader的使用，可以[参见这里](./how-to-use-old.md)，我fork并扩展了一下，让它变成**安装即用**。
+关于iHeader的使用，可以[参见这里](./how-use.md)，我fork并扩展了一下，让它变成**安装即用**。
 
 # 效果图
 
