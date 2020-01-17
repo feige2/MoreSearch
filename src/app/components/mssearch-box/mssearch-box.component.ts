@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, Input} from '@angular/core';
 import {BaseView} from '../../base-view';
 import hotkeys, {HotkeysEvent} from 'hotkeys-js';
 
@@ -15,6 +15,7 @@ interface IViewData {
 export class MSSearchBoxComponent extends BaseView<IViewData> implements OnInit {
 
   @Output() onClick_Search: EventEmitter<string> = new EventEmitter<string>();
+  @Input() inputText;
 
   constructor() {
     super({
@@ -31,6 +32,9 @@ export class MSSearchBoxComponent extends BaseView<IViewData> implements OnInit 
     }, (keyEvent: KeyboardEvent, hkevent: HotkeysEvent) => {
       this.onClick_search();
     });
+    if(this.inputText){
+      this.viewData.inputText = this.inputText;
+    }
   }
 
   onClick_search() {

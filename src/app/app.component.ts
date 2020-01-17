@@ -1,8 +1,10 @@
-import {Component} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {MSServiceService} from './msservice.service';
 import {BaseView} from './base-view';
 import {MSConfig} from './MSConfig';
 import hotkeys from 'hotkeys-js';
+import { MSSearchBoxComponent } from './components/mssearch-box/mssearch-box.component';
 
 interface IScreen {
   isShow: boolean;
@@ -15,6 +17,7 @@ interface IScreen {
 
 interface IViewData {
   screens: IScreen[];
+  query?: string;
 }
 
 @Component({
@@ -22,11 +25,14 @@ interface IViewData {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent extends BaseView<IViewData> {
+export class AppComponent extends BaseView<IViewData> implements OnInit{
   title = 'MoreSearch';
 
-  constructor(public msService: MSServiceService) {
+  @ViewChild(MSSearchBoxComponent) searchBox: MSSearchBoxComponent;
+
+  constructor(public msService: MSServiceService,public router: ActivatedRoute) {
     super({
+      query: '',
       screens: [/*{
         isShow: false,
         index: 4,
@@ -67,6 +73,19 @@ export class AppComponent extends BaseView<IViewData> {
     };
   }
 
+  ngOnInit() {
+    this.router.queryParams.subscribe(params => {
+      let query = params['query'];
+      if(query){
+        this.viewData.query = query;
+        if(this.searchBox){
+          this.searchBox.viewData.inputText = query;
+        }
+        this.onClick_Search(query);
+      }
+    });
+  }
+  
   onClick_Search(inputText: string) {
     this.msService.search(inputText);
   }

@@ -1,6 +1,6 @@
 <div class="box-root">
   <div class="box-top">
-    <ms-search-box (onClick_Search)="onClick_Search($event)"></ms-search-box>
+    <ms-search-box [inputText]="this.viewData.query" (onClick_Search)="onClick_Search($event)"></ms-search-box>
     <div class="box-btns">
       <!--      <div class="btn" *ngIf="viewData.screens.length<4" (click)="onClick_addScreen()">-->
       <!--        <img class="btn-add" src="assets/img/add.png"/>-->
